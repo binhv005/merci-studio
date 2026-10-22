@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #2a2420;
+  --color-ink-900: #3a322d;
+  --color-ink-800: #4b423c;
+  --color-ink-700: #655a52;
+  --color-ink-600: #7d746d;
+  --color-ink-500: #968d86;
+  --color-ink-400: #b0a8a2;
+  --color-ink-300: #cbc5c0;
+  --color-ink-200: #e3dfdb;
+  --color-ink-100: #efecea;
+  --color-ink-50: #f7f6f4;
+
+  --color-sage-warm: #f6f1ea;
+  --color-sage-50: #f6f1ea;
+
+  /* Nền trắng kem của MERCI */
+  --color-cream-50: #fffdf9;
+  --color-cream-100: #faf6f0;
+  --color-cream-200: #f1e9de;
+  --color-cream-300: #e5d9c9;
+  --color-cream-400: #d2c2ad;
+
+  /* Thang màu nâu latte của MERCI (ghi đè amber để các utility sẵn có nhận màu thương hiệu) */
+  --color-amber-50: #fbf7f2;
+  --color-amber-100: #f4ece2;
+  --color-amber-200: #e9dac7;
+  --color-amber-300: #dcc3a6;
+  --color-amber-400: #c6a17d;
+  --color-amber-500: #a57f5e;
+  --color-amber-600: #8c6a4d;
+  --color-amber-700: #72553e;
+  --color-amber-800: #5a4332;
+  --color-amber-900: #403027;
+
+  --color-accent-amber: #a57f5e;
+  --color-accent-gold: #8c6a4d;
+  --color-accent-sun: #c6a17d;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+  --font-handwriting: 'Dancing Script', 'Caveat', cursive;
+  --font-script: 'Dancing Script', 'Caveat', cursive;
+
+  --shadow-soft: 0 10px 30px -10px rgba(90, 67, 50, 0.10);
+  --shadow-card: 0 15px 35px -5px rgba(90, 67, 50, 0.14);
+  --shadow-elevated: 0 25px 50px -12px rgba(90, 67, 50, 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #fffdf9;
+    scrollbar-color: rgba(165, 127, 94, 0.5) #fffdf9;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: #2a2420;
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  
+  p, span, li, blockquote, a, button, label, input, textarea, select {
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+  }
+}
+
+/* Utility font classes with high priority */
+.font-script,
+.font-script *,
+.font-handwriting,
+.font-handwriting *,
+.font-cursive,
+.font-cursive * {
+  font-family: 'Dancing Script', 'Caveat', cursive !important;
+}
+
+.font-display {
+  font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fffdf9 !important;
+}
+::-webkit-scrollbar-thumb {
+  background: #a57f5e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8c6a4d;
+}
+
+/* Glassmorphism utilities */
+.glass-nav {
+  background: rgba(42, 36, 32, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-dark {
+  background: rgba(42, 36, 32, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Badge styling */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--color-amber-100);
+  color: var(--color-amber-800);
+  border: 1px solid rgba(233, 218, 199, 0.8);
+}
+
+.badge-pill-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+/* Subtle animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1.02); }
+  50% { transform: scale(1.06); }
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 12s ease-in-out infinite alternate;
+}
